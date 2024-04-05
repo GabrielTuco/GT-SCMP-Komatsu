@@ -26,7 +26,7 @@ export const WorkPanel = () => {
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {
                         listInprocess.map(e => (
-                            <Tab label="I" />))
+                            <Tab label={e.descripcion} />))
                     }
                 </Tabs>
 

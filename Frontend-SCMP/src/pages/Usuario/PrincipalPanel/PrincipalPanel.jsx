@@ -8,6 +8,7 @@ import { useOS } from '../../../hooks/useOS'
 export const PrincipalPanel = () => {
     const { listOs, getData, handleStart, handleEnd } = useOS()
     const [selectedTodo, setSelectedTodo] = useState([])
+    const [selectedProcess, setSelectedProcess] = useState([])
 
 
     useEffect(() => {
@@ -38,7 +39,7 @@ export const PrincipalPanel = () => {
 
                 <Panel title={"IN PROCESS"} color={"#F5E33E"} button={
                     <Button
-                        onClick={(e) => { handleEnd(selectedTodo) }}
+                        onClick={(e) => { handleEnd(selectedProcess) }}
                         sx={{
                             alignSelf: 'flex-end'
                         }}
@@ -49,7 +50,7 @@ export const PrincipalPanel = () => {
                     </Button>
                 }>
                     {
-                        listOs.filter(e => e.estado == "inprocess").map((e) => (<OSItem id={e.cod_ord} text={e.descripcion} />))
+                        listOs.filter(e => e.estado == "inprocess").map((e) => (<OSItem checkeds={selectedProcess} setChecked={setSelectedProcess} id={e.cod_ord} text={e.descripcion} />))
                     }
                 </Panel>
 

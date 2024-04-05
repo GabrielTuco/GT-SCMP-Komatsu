@@ -35,8 +35,12 @@ export const useOS = () => {
 
   const handleEnd = async (list = []) => {
     try {
-      const temp = listOs.filter((e) => e.estado == "inprocess");
-      const body = list.map((e) => temp[e - 1]);
+      if (list.length != 0) {
+        const temp = listOs.filter((e) => e.estado == "inprocess");
+        const body = list.map((e) => temp[e - 1]);
+        await actionEnd(body);
+        getData();
+      }
     } catch (error) {}
   };
 
